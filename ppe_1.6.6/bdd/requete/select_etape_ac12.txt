@@ -1,0 +1,1 @@
+SELECT `ETPID`, `LIEUNOM` FROM etape INNER JOIN lieu ON etape.ETPID = lieu.LIEUID
