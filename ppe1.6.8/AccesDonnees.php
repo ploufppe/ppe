@@ -1,7 +1,7 @@
 <?php
 /**
  *  Bibliothèque de fonctions AccesDonnees.php
- * 
+ * revu by lucas & Julien
  *
  * 
  * @author Lucas, Julien
