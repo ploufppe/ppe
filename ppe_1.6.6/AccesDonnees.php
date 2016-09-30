@@ -149,6 +149,7 @@ function deconnexion() {
 function executeSQL($sql) {
 	global $modeacces, $connexion, $logsql;
 	
+	//Formatage de la date pour le dichier log.txt
 	$uneChaine = date("j M Y - G:i:s --> ").$sql."\r\n";
 	
 	if ($logsql=="all") {
@@ -181,6 +182,7 @@ function executeSQL($sql) {
 }
 function afficheErreur($sql, $erreur) {
 	
+	//Formatage de la date pour le dichier log.txt
 	$uneChaine = "ERREUR SQL : ".date("j M Y - G:i:s.u --> ").$sql." : ($erreur) \r\n";
 	
 	ecritRequeteSQL($uneChaine);
