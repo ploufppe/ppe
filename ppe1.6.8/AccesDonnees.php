@@ -19,6 +19,8 @@
 ///////////// CONFIGURATION DE L'ACCES AUX DONNEES ////////////////////
 // nom du moteur d'accès à la base : mysql - mysqli - pdo
 $modeacces = "pdo";
+// type de base choisi : mysql - ORACLE
+$typeBase = 'oracle';
 // enregistrement des logs de connexion : true - false
 $logcnx = TRUE;
 // enregistrement des requetes SQL : none - all - modif
@@ -72,11 +74,14 @@ function connexion($host,$port,$dbname,$user,$password) {
 	/*  TEST CNX PDO
 	 *
 	 */
-	if ($modeacces=="pdo") {
+	if ($typeBase = "mysql"){
 		// ceation du Data Source Name, ou DSN, qui contient les infos
 		// requises pour se connecter à la base.
 		$dsn='mysql:host='.$host.';port='.$port.';dbname='.$dbname;
-
+	}
+	if ($typeBase = "oracle"){
+		$dsn = "oci:dbname=//".$host.':'.$port.'/'.$dbname;
+	}
 		try
 		{
 			$connexion = new PDO($dsn, $user, $password);
