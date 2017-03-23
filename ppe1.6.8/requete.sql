@@ -5874,3 +5874,69 @@ ERREUR SQL : 18 May 2016 - 15:43:52.000000 --> SELECT LIEUNOM, VILNOM FROM LIEU,
 18 May 2016 - 16:27:28 --> select VEHIMMAT from vehicule
 18 May 2016 - 16:27:28 --> SELECT `TRNCOMMENTAIRE` FROM `tournee` WHERE `TRNNUM`= 2
 18 May 2016 - 16:27:47 --> SELECT LIEUNOM, VILNOM FROM LIEU, COMMUNE WHERE LIEU.vilId = COMMUNE.VILid AND LIEUID = 1
+ERREUR SQL : 7 Oct 2016 - 9:14:11.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 9:17:38.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 9:17:39.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 9:17:41.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 9:18:09.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 9:19:05.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 9:23:29.000000 --> select * from chauffeur; : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 9:31:19.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 9:54:15.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 10:17:09.000000 --> select * from matable; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 10:17:43.000000 --> select * from emp; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 10:29:57.000000 --> select * from emp; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 10:30:32.000000 --> select * from EMP; : (OCIStmtExecute: ORA-00911: invalid character
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:19:31.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE`
+													FROM tournee 
+													ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:23:43.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE`
+													FROM tournee 
+													ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:25:01.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:38.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:40.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:40.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:40.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:41.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:42.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:42.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:43.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:43.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:43.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:43.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:43.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:44.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:44.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 
+ERREUR SQL : 7 Oct 2016 - 11:28:44.000000 --> SELECT `TRNNUM`, `VEHIMMAT`, `CHFID`, `TRNDTE`, `TRNPECCHAUFFEUR`, `TRNARCHAUFFEUR`, `TRNCOMMENTAIRE` FROM tournee ORDER BY TRNNUM : (OCIStmtExecute: ORA-00911: caractere non valide
+ (ext\pdo_oci\oci_statement.c:148)) 

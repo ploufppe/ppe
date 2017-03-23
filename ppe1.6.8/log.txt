@@ -817,3 +817,16 @@ Connexion OK - 18 May 2016 - 16:25:17 - root
 Connexion OK - 18 May 2016 - 16:26:23 - root
 Connexion OK - 18 May 2016 - 16:27:28 - root
 Connexion OK - 18 May 2016 - 16:27:47 - root
+Connexion OK - 7 Oct 2016 - 9:14:11 - scott
+Connexion OK - 7 Oct 2016 - 9:17:38 - scott
+Connexion OK - 7 Oct 2016 - 9:17:39 - scott
+Connexion OK - 7 Oct 2016 - 9:17:41 - scott
+Connexion OK - 7 Oct 2016 - 9:18:09 - scott
+Connexion OK - 7 Oct 2016 - 9:19:05 - scott
+Connexion OK - 7 Oct 2016 - 9:23:29 - sc_chauffeur
+Connexion OK - 7 Oct 2016 - 9:31:19 - scott
+Connexion OK - 7 Oct 2016 - 9:34:42 - root
+Connexion PB - 7 Oct 2016 - 9:37:52 - root - 12569 - SQLSTATE[HY000]: pdo_oci_handle_factory: ORA-12569: TNS:packet checksum failure
+ (ext\pdo_oci\oci_driver.c:633)
+Connexion PB - 7 Oct 2016 - 9:40:22 - root - 12569 - SQLSTATE[HY000]: pdo_oci_handle_factory: ORA-12569: TNS:packet checksum failure
+ (ext\pdo_oci\oci_driver.c:633)

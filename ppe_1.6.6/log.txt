@@ -678,3 +678,5 @@ Connexion OK - 18 May 2016 - 10:36:38 - root
 Connexion OK - 18 May 2016 - 10:36:51 - root
 Connexion OK - 18 May 2016 - 10:36:54 - root
 Connexion OK - 18 May 2016 - 10:37:01 - root
+Connexion OK - 7 Oct 2016 - 9:10:51 - root
+Connexion OK - 7 Oct 2016 - 9:46:37 - root

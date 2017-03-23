@@ -4,25 +4,23 @@
 *
 *
 *
-* @author Erwan || Revu par Julien & Lucas
+* @author Erwan
 * @copyright Estran
-* @version 4.6 Mardi 27 Septembre 2016
+* @version 4.7.2 Vendredi 7 Oct 2016
 *
 *
-* Implementation de PDO terminee
-*  - nomChamp OK
-*  - afficheRequete OK
-*  - dump OK
+* Suite implementation Oracle
+*  - TODO debug de la fonction typeChamp
 *  - TODO faire la restaure
 *
 */
 ///////////// CONFIGURATION DE L'ACCES AUX DONNEES ////////////////////
 // nom du moteur d'accès à la base : mysql - mysqli - pdo
 $modeacces = "pdo";
-// type de base choisi : mysql - ORACLE
-$typeBase = 'oracle';
+// type de la base de donnees : mysql - oracle
+$typebase = "oracle";
 // enregistrement des logs de connexion : true - false
-$logcnx = TRUE;
+$logcnx = FALSE;
 // enregistrement des requetes SQL : none - all - modif
 $logsql = "none";
 //////////////////////////////////////////////////////////////////////
@@ -48,7 +46,7 @@ $mysql_data_type_hash = array(
 );
 /**
  *
- * Ouvre une connexion à un serveur MySQL et sélectionne une base de données.
+ * Ouvre une connexion à un serveur MySQL ou ORACLE et sélectionne une base de données.
  * @param host string
  *  <p>Adresse du serveur MySQL.</p>
  * @param port integer
@@ -65,28 +63,38 @@ $mysql_data_type_hash = array(
  */
 function connexion($host,$port,$dbname,$user,$password) {
 
-	global $modeacces, $logcnx, $connexion;
+	global $modeacces, $logcnx, $connexion, $typebase;
 
 
 
-
-
-	/*  TEST CNX PDO
+	/*  TEST CNX ORACLE
 	 *
 	 */
-	if ($typeBase = "mysql"){
-		// ceation du Data Source Name, ou DSN, qui contient les infos
-		// requises pour se connecter à la base.
-		$dsn='mysql:host='.$host.';port='.$port.';dbname='.$dbname;
-	}
-	if ($typeBase = "oracle"){
-		$dsn = "oci:dbname=//".$host.':'.$port.'/'.$dbname;
-	}
+	if ($modeacces=="pdo") {
+
+		if ($typebase=="mysql") {
+
+			// ceation du Data Source Name, ou DSN, qui contient les infos
+			// requises pour se connecter à un base de donnees MySQL en
+			// utilisant un driver PDO.
+			$dsn='mysql:host='.$host.';port='.$port.';dbname='.$dbname;
+				
+		}
+
+		if ($typebase=="oracle") {
+				
+			// ceation du Data Source Name, ou DSN, qui contient les infos
+			// requises pour se connecter à la base en PDO driver oracle.
+			// exemple : oci:dbname=//10.100.22.20:1521/ora18sdis29
+			$dsn='oci:dbname=//'.$host.':'.$port.'/'.$dbname;
+
+		}
+			
 		try
 		{
 			$connexion = new PDO($dsn, $user, $password);
 		}
-
+			
 		catch(Exception $e)
 		{
 			/*echo 'Erreur : '.$e->getMessage().'<br />';
@@ -95,17 +103,13 @@ function connexion($host,$port,$dbname,$user,$password) {
 			$chaine = "Connexion PB - ".date("j M Y - G:i:s - ").$user." - ". $e->getCode() . " - ". $e->getMessage()."\r\n";
 			$connexion = FALSE;
 		}
-
+			
 		if ($connexion) {
 			$chaine = "Connexion OK - ".date("j M Y - G:i:s - ").$user."\r\n";
 		}
 
+
 	}
-
-
-
-
-
 
 	if ($modeacces=="mysql") {
 			
@@ -298,12 +302,22 @@ function tableSQL($sql) {
  *         ou FALSE si une erreur survient.
  */
 function compteSQL($sql) {
-	global $modeacces, $connexion;
+	global $modeacces, $connexion, $typebase;
 
 	if ($modeacces=="pdo") {
-		$repueteP=$connexion->prepare($sql);
-		$repueteP->execute();
-		$num_rows = $repueteP->rowCount();
+
+		if ($typebase=="mysql") {
+			$repueteP=$connexion->prepare($sql);
+			$repueteP->execute();
+			$num_rows = $repueteP->rowCount();
+		}
+
+		if ($typebase=="oracle") {
+			$recordset=$connexion->query($sql);
+			$fields = $recordset->fetchAll(PDO::FETCH_ASSOC);
+			$num_rows = sizeof($fields);
+		}
+
 	}
 	if ($modeacces=="mysql") {
 		$result = executeSQL($sql);
@@ -387,27 +401,86 @@ function nombreChamp($sql) {
  *
  */
 function typeChamp($sql, $field_offset) {
-	global $modeacces, $connexion, $mysql_data_type_hash;
+	global $modeacces, $connexion, $mysql_data_type_hash, $typebase;
 	$result = executeSQL($sql);
 
 	if ($modeacces=="pdo") {
+
 		$posfrom = strpos(strtolower($sql), "from");
 		$newsql = substr($sql, $posfrom+5, strlen($sql)-5-$posfrom);
 		$nomtables = explode(',',$newsql);
 		$nomtable = trim($nomtables[0]);
-		$recordset = $connexion->query("SHOW COLUMNS FROM $nomtable");
-		$fields = $recordset->fetchAll(PDO::FETCH_ASSOC);
-		$letype = ($fields[$field_offset]["Type"]);
 
-		if (stristr($letype,'varchar')!=FALSE) {
-			$letype="string";
+		if ($typebase=="pdo") {
+			$recordset = $connexion->query("SHOW COLUMNS FROM $nomtable");
+			$fields = $recordset->fetchAll(PDO::FETCH_ASSOC);
+
 		}
 
-		if (stristr($letype,'int')!=FALSE) {
-			$letype="int";
+
+
+
+		//////////////////
+		//////////////////
+		/////////////////
+		//TODO
+
+		if ($typebase=="oracle") {
+			echo "DEBUG....<br />";
+				
+				
+			/* getColumnMeta est EXPERIMENTALE. Cela signifie que le comportement de cette fonction, son nom et,
+			 * concrètement, TOUT ce qui est documenté ici peut changer dans un futur proche, SANS PREAVIS !
+			 * Soyez-en conscient, et utilisez cette fonction à vos risques et périls.
+			 $select = $connexion->query($sql);
+			 $meta = $select->getColumnMeta($field_offset);
+			 return ($meta["native_type"]);
+			 */
+				
+			echo $sql;
+			echo "<br />";
+				
+			$posfrom = strpos(strtoupper($sql), "FROM");
+			$newsql = substr($sql, $posfrom+5, strlen($sql)-5-$posfrom);
+			$nomtables = explode(',',$newsql);
+			$nomtable = trim($nomtables[0]);
+				
+			echo $nomtable;
+				
+			$nomDuChamp = nomChamp($sql,$field_offset);
+				
+			echo " ".$nomDuChamp;
+				
+			echo "<hr />";
+			//$sqlD = "describe $nomtable;";
+			$sqlD =" SELECT data_type
+			FROM user_tab_cols
+			WHERE COLUMN_NAME='$nomDuChamp' AND TABLE_NAME='$nomtable'";
+			echo $sqlD."<br />";
+				
+			echo champSQL($sqlD);
+			echo "<hr />";
+				
+
 		}
 
-		return $letype;
+
+
+
+		if ($typebase=="pdo")
+			$letype = ($fields[$field_offset]["Type"]);
+			if ($typebase=="oracle")
+				$letype = "DEBUG";
+
+				if (stristr($letype,'varchar')!=FALSE) {
+					$letype="string";
+				}
+
+				if (stristr($letype,'int')!=FALSE) {
+					$letype="int";
+				}
+
+				return $letype;
 	}
 
 	if ($modeacces=="mysql") {
@@ -476,6 +549,21 @@ function versionMYSQL() {
 	if ($modeacces=="mysqli") {
 		return   $connexion->server_info;
 	}
+}
+function versionOracle() {
+
+	global $connexion;
+	///////////////////////
+	///////////////////////
+	//////////////////////
+	// TODO
+	return oci_server_version($connexion);
+}
+function versionBase() {
+	///////////////////////
+	///////////////////////
+	//////////////////////
+	// TODO
 }
 /**
  *
@@ -765,6 +853,7 @@ function import(){
 
 
 }
+
 
 function verificationHorraire ($heure1, $heure2, $heure3, $uneRedirection, $TRNNUM){
 	if ($heure1 <= $heure2 and ($heure3 <= $heure2 and $heure3 >= $heure1)){
